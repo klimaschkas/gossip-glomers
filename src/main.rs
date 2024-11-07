@@ -20,6 +20,10 @@ use tokio_stream::StreamExt;
 
     while let Some(msg_res) = stdin_stream.next().await {
         let mut msg = serde_json::from_str::<Message>(msg_res?.as_str())?;
+
+        if msg.dest.starts_with("c") {
+            continue;
+        }
         
         std::mem::swap(&mut msg.dest, &mut msg.src);
         
