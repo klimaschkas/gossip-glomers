@@ -12,7 +12,7 @@ pub struct Message {
 pub struct Body {
     #[serde(rename = "type")]
     pub type_field: String,
-    pub msg_id: i64,
+    pub msg_id: Option<i64>,
     pub in_reply_to: Option<i64>,
-    pub echo: String,
+    pub echo: Option<String>,
 }
