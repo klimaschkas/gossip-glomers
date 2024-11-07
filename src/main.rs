@@ -29,6 +29,7 @@ use tokio_stream::StreamExt;
         let response = serde_json::to_vec(&msg)?;
 
         stdout.write_all(&response).await?;
+        stdout.flush().await?;
     }
     
     Ok(())
