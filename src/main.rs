@@ -24,7 +24,7 @@ use tokio_stream::StreamExt;
         std::mem::swap(&mut msg.dest, &mut msg.src);
         
         msg.body.type_field = "echo_ok".into();
-        msg.body.in_reply_to = Some(msg.body.msg_id.unwrap_or(0));
+        msg.body.in_reply_to = Some(msg.body.msg_id.expect("required reply message missing"));
 
         let response = serde_json::to_vec(&msg)?;
 
